@@ -20,12 +20,9 @@ WORKDIR /tmp
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
 WORKDIR mecab-ipadic-neologd
 
-RUN pwd
 RUN bin/install-mecab-ipadic-neologd -n -u --prefix /usr/lib/mecab/dic/mecab-ipadic-neologd -y
 
 WORKDIR /
 
-
-RUN pwd
 RUN sed -i -e '/dicdir /c dicdir  = /usr/lib/mecab/dic/mecab-ipadic-neologd'  /etc/mecabrc 
 
